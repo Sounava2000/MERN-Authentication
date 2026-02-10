@@ -39,6 +39,10 @@ export const Login = ({ setIsLogin }) => {
         setUser(data.user);
         navigate("/");
       }
+      else {
+        toast.error(data.message); 
+
+      }
     } catch (error) {
       toast.error(error.message);
     }

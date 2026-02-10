@@ -19,14 +19,14 @@ export const Instructor = () => {
           </p>
           <div className="social-links">
             <a
-              href="https://github.com/Zeeshu911"
+              href="https://github.com/Sounava2000"
               target="_blank"
               rel="noopener noreferrer"
             >
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/muhammad-zeeshan-khan-dev/"
+              href="  #"
               target="_blank"
               rel="noopener noreferrer"
             >
