@@ -36,7 +36,7 @@ export const OtpVerification = () => {
     }
 
     try {
-      const res = await fetch(`${API_URL}/otp-verify`, {
+      const res = await fetch(`${API_URL}/v1/otp-verify`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, phone, otp: otpValue }),

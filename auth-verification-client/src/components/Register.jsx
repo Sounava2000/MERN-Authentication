@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const Register = () => {
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL;
-
+console.log(API_URL)
   const [loader, setLoader] = useState(false);
   const [register, setRegister] = useState({
     name: "",
@@ -34,7 +34,7 @@ export const Register = () => {
     setLoader(true);
 
     try {
-      const res = await fetch(`${API_URL}/register`, {
+      const res = await fetch(`${API_URL}/v1/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(register),

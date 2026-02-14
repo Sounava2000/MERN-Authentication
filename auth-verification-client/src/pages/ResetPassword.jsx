@@ -18,7 +18,7 @@ export const ResetPassword = () => {
     e.preventDefault();
     try {
       const res = await fetch(
-        `${API_URL}/password/reset/${token}`,
+        `${API_URL}/v1/password/reset/${token}`,
         {
           method: "POST",
           headers: {
