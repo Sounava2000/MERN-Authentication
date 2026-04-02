@@ -17,7 +17,7 @@ console.log("NEW VERSION DEPLOYED");
 app.options("/*", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/v1", userRouter);
+// app.use("/v1", userRouter);
 app.use(ErrorMiddleware);
 dbConnect()
   .then(() =>
