@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-export   function generateEmailTemplate(verificationCode,  name) {
+export   function generateEmailTemplate(verificationCode,  name,subject) {
   const message = `<body
     style="
       background: #f5f5f5;
@@ -19,10 +19,11 @@ export   function generateEmailTemplate(verificationCode,  name) {
       "
     >
       <h2 style="color: #4a4a4a; text-align: center;">Your Verification Code</h2>
-
+ 
       <p>Hello ${name},</p>
       <p>
-        Thank you for registering. Your verification code is:
+         
+        ${subject}
       </p>
 
       <div

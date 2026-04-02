@@ -11,17 +11,15 @@ export const OtpVerification = () => {
 
   const [otp, setOtp] = useState(["", "", "", ""]);
   const navigate = useNavigate();
-
+console.log(`${API_URL}`)
   if (isAuthenticated) return <Navigate to="/" />;
 
   const handleChange = (index, value) => {
-    if (!/^[0-9]?$/.test(value)) return;  
+    if (!/^[0-9]?$/.test(value)) return;
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
 
-    
-    
     if (value && index < 3) {
       const nextInput = document.getElementById(`otp-${index + 1}`);
       nextInput?.focus();
@@ -44,8 +42,8 @@ export const OtpVerification = () => {
       const data = await res.json();
       if (data.success) {
         toast.success("OTP Verified Successfully!");
-         localStorage.setItem("token", data.token);
-           localStorage.setItem("user", JSON.stringify(data.firstUser.name));
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.firstUser.name));
 
         setIsAuthenticated(true);
         setUser(data.firstUser);
@@ -57,7 +55,26 @@ export const OtpVerification = () => {
       toast.error(error.message);
     }
   };
-
+  async function handleResend() {
+    try {
+      const res = await fetch(`${API_URL}/v1/resend-otp`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, phone }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast.success("OTP resent successfully!");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error("Something went wrong");
+    }
+  }
   return (
     <div className="otp-wrapper">
       <div className="otp-card">
@@ -83,7 +100,7 @@ export const OtpVerification = () => {
         </button>
 
         <p className="resend-text">
-          Didn’t receive the code? <span>Resend</span>
+          Didn’t receive the code? <span onClick={handleResend}>Resend</span>
         </p>
       </div>
     </div>

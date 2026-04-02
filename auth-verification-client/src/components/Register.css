@@ -73,7 +73,7 @@
   background: #556cd6;
 }
 .loading-register {
-    cursor:not-allowed ;
+    cursor:progress ;
     opacity: 0.1;
 }
 .footer-text {

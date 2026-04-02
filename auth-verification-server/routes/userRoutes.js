@@ -2,6 +2,7 @@ import express from "express";
 import {
   forgetPassword,
   getUser,
+  resend,
   resetPassword,
   userLogin,
   userRegister,
@@ -17,5 +18,5 @@ router.get("/me", isAuthenticated,getUser);
 router.post("/password/forget",forgetPassword);
 router.post("/password/reset/:token",resetPassword);
 
-
+router.post("/resend-otp",resend)
 export default router;

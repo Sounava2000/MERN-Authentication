@@ -3,6 +3,7 @@ import { forgetPasswordService } from "../services/forgetPasswordService.js"
 import { getUserService } from "../services/getUserService.js"
 import { loginService } from "../services/loginService.js"
 import { registerService } from "../services/registerService.js"
+import { resendService } from "../services/resendService.js"
 import { resetPasswordService } from "../services/resetPasswordService.js"
 import { veriftOtpService } from "../services/veriftOtpService.js"
 
@@ -24,4 +25,12 @@ await forgetPasswordService(req,res,next)
 
 export const resetPassword = catchAsync(async(req,res,next)=> {
 await resetPasswordService(req,res,next)
+})
+
+
+
+
+
+export const resend = catchAsync(async (req,res,next) => {
+    await resendService(req,res,next)
 })

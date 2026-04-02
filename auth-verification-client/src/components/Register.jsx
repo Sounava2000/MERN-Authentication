@@ -25,9 +25,9 @@ console.log(API_URL)
       return copyCode;
     });
   }
-  useEffect(() => {
-    console.log(register);
-  }, [register]);
+  // useEffect(() => {
+  //   console.log(register);
+  // }, [register]);
 
   async function handelSubmit(e) {
     e.preventDefault();
@@ -101,6 +101,7 @@ console.log(API_URL)
               type="password"
               value={register.password}
               name="password"
+              
               onChange={(e) => handelChange(e)}
               placeholder="Create a password"
             />

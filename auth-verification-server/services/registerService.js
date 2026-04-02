@@ -36,7 +36,7 @@ export const registerService = async (req, res, next) => {
     const newUser = await User.create({ name, email, phone, password });
     const verificationCode = await newUser.genarateVerificationCode();
     await newUser.save();
-    const subject ="Your verification code"
+    const subject ="Thank you for registering. Your verification code is:"
     const message = generateEmailTemplate(verificationCode, name,subject);
    await sendEmail(message, email,subject);
     res.status(201).json({

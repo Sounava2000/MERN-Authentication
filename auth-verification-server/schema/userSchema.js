@@ -36,7 +36,9 @@ export const userSchema = new Schema({
   verificationCode: {
     type: Number,
   },
-
+  lastOtpSent: {
+    type: Date,
+  },
   verificationCodeExpire: {
     type: Date,
   },
@@ -78,11 +80,12 @@ userSchema.methods.genarateVerificationCode = function () {
   this.verificationCode = fourDigitNo;
 
   this.verificationCodeExpire = new Date(
-    Date.now() + 5 * 60 * 1000 + 5.5 * 60 * 60 * 1000
+    Date.now() + 5 * 60 * 1000 + 5.5 * 60 * 60 * 1000,
   );
 
   return fourDigitNo;
 };
+
 userSchema.methods.generateResetToken = function () {
   const token = crypto.randomBytes(32).toString("hex");
   this.resetPasswordToken = crypto
