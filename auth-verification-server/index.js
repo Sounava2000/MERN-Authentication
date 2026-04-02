@@ -13,6 +13,7 @@ app.use(cors({
   origin: "https://mern-authentication-murex.vercel.app",
   credentials: true
 }));
+console.log("NEW VERSION DEPLOYED");
 app.options("*", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
