@@ -9,12 +9,10 @@ const app = express();
 dotenv.config();
 const port = process.env.PORT;
  
-app.use(
-  cors({
-    origin: "https://mern-authentication-murex.vercel.app",
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: "https://mern-authentication-murex.vercel.app",
+  credentials: true
+}));
 app.options("*", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

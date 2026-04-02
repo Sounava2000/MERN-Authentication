@@ -23,6 +23,14 @@ export const ErrorMiddleware = (err, req, res, next) => {
     const message = "Token expired, please login again!";
     err = new ErrorHandeler(message, 400);
   }
+
+  // ✅ ADD THESE LINES (VERY IMPORTANT)
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://mern-authentication-murex.vercel.app"
+  );
+  res.header("Access-Control-Allow-Credentials", "true");
+
   res.status(err.statusCode).json({
     success: false,
     message: err.message,
