@@ -8,14 +8,10 @@ import { ErrorMiddleware } from "./middlewares/error.js";
 const app = express();
 dotenv.config();
 const port = process.env.PORT;
-
+ 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://mern-authentication-murex.vercel.app",
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "https://mern-authentication-murex.vercel.app",
     credentials: true,
   })
 );
