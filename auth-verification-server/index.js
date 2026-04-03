@@ -8,16 +8,19 @@ import { ErrorMiddleware } from "./middlewares/error.js";
 const app = express();
 dotenv.config();
 const port = process.env.PORT;
- 
 app.use(cors({
-  origin: "https://mern-authentication-murex.vercel.app",
+  origin: [
+    "https://mern-authentication-murex.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:5174"
+  ],
   credentials: true
 }));
 console.log("NEW VERSION DEPLOYED");
-app.options("/*", cors());
+app.options("/", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use("/v1", userRouter);
+  app.use("/v1", userRouter);
 app.use(ErrorMiddleware);
 dbConnect()
   .then(() =>
