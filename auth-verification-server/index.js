@@ -11,13 +11,14 @@ const port = process.env.PORT;
 app.use(cors({
   origin: [
     "https://mern-authentication-murex.vercel.app",
+    "https://mern-authentication-b8v8ts016-sounavas-projects.vercel.app", // ✅ add this
     "http://localhost:5173",
     "http://localhost:5174"
   ],
   credentials: true
 }));
 console.log("NEW VERSION DEPLOYED");
-app.options("/", cors());
+app.options("*", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
   app.use("/v1", userRouter);
